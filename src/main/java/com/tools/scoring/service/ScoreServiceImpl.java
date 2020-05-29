@@ -5,8 +5,8 @@ import com.tools.scoring.algorithm.ScoringAlgorithmFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.nio.file.Path;
+import java.util.Collections;
 
 @Service
 @Slf4j
@@ -22,11 +22,6 @@ public class ScoreServiceImpl implements ScoreService {
 
     @Override
     public long getTotalScore(Path source) {
-        if (fileService.getNames(source).isPresent()){
-            return scoreJob.scoreTotalFile(fileService.getNames(source).get());
-        } else {
-            return 0;
-        }
-
+       return scoreJob.scoreTotalFile(fileService.getNames(source).orElse(Collections.emptyList()));
     }
 }
