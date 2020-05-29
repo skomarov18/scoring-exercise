@@ -1,0 +1,5 @@
+#######
+# Configuration for scoring algorithm
+#######
+algorithm:
+  name: simple
